@@ -76,12 +76,14 @@ public class Camping implements InCamping {
 
     @Override
     public void afegirGlamping(String nom_, String idAllotjament_, String mida, int habitacions, int placesPersones, String material, boolean casaMascota) {
-
+        Glamping lucasta = new Glamping(nom_,idAllotjament_,mida,habitacions,placesPersones,material,casaMascota);
+        allotjaments.add(lucasta);
     }
 
     @Override
     public void afegirMobilHome(String nom_, String idAllotjament_, String mida, int habitacions, int placesPersones, boolean terrassaBarbacoa) {
-
+        MobilHome feryfer = new MobilHome(nom_,idAllotjament_,mida,habitacions,placesPersones,terrassaBarbacoa);
+        allotjaments.add(feryfer);
     }
 
     @Override
