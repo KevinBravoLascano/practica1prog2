@@ -94,8 +94,9 @@ public class Camping implements InCamping {
 
     @Override
     public void afegirReserva(String id_, String dni_, LocalDate dataEntrada, LocalDate dataSortida) throws ExcepcioReserva {
-        buscarAllotjament(id_);
-        buscarClient(dni_);
+        Allotjament peruvianHouse= buscarAllotjament(id_);
+        Client emikukis = buscarClient(dni_);
+        reservas.afegirReserva(peruvianHouse,emikukis,dataEntrada,dataSortida);
     }
 
     public static InAllotjament.Temp getTemporada(LocalDate data) {
