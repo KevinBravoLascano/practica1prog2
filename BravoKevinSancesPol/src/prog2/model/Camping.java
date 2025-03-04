@@ -2,8 +2,11 @@ package prog2.model;
 
 import prog2.vista.ExcepcioReserva;
 
+import javax.swing.text.html.HTMLDocument;
 import java.time.LocalDate;
+import java.time.Month;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class Camping implements InCamping {
     private String nombre;
@@ -95,7 +98,14 @@ public class Camping implements InCamping {
     }
 
     public static InAllotjament.Temp getTemporada(LocalDate data) {
-        return null;
+        LocalDate iniciAlta = LocalDate.of(data.getYear(), Month.MARCH, 21);
+        LocalDate fiAlta = LocalDate.of(data.getYear(), Month.SEPTEMBER, 20);
+
+        if (!data.isBefore(iniciAlta) && !data.isAfter(fiAlta)) {
+            return InAllotjament.Temp.ALTA;
+        } else {
+            return InAllotjament.Temp.BAIXA;
+        }
     }
 
 
@@ -103,12 +113,16 @@ public class Camping implements InCamping {
 
     @Override
     public float calculMidaTotalParceles() {
-        for (Allotjament cosa : allotjaments) {
-            if (cosa instanceof Parcela) {
-                System.out.println(((Parcela) cosa).getMetres()*((Parcela) cosa).getMetres() + " metres");
+        Iterator<Allotjament> it = allotjaments.iterator();
+        float metros = 0.0f;
+        while (it.hasNext()) {
+            Allotjament allotjament = it.next();
+            if(allotjament instanceof Parcela) {
+                metros+= ((Parcela) allotjament).getMetres();
+
             }
         }
-        return 0;
+        return metros;
     }
 
     @Override
