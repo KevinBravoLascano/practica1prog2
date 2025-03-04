@@ -9,6 +9,7 @@ public class Camping implements InCamping {
     private String nombre;
     protected ArrayList<Allotjament> allotjaments;
     protected ArrayList<Client> clients;
+    protected LlistaReserves reservas;
 
     Camping(String nombre) {
         this.nombre = nombre;
@@ -20,7 +21,8 @@ public class Camping implements InCamping {
 
     @Override
     public LlistaReserves getLlistaReserves() {
-        return null;
+
+        return reservas;
     }
 
     @Override
@@ -41,7 +43,8 @@ public class Camping implements InCamping {
 
     @Override
     public int getNumReserves() {
-        return 0;
+        int tamano= reservas.getNumReserves();
+        return tamano;
     }
 
     @Override
@@ -91,6 +94,13 @@ public class Camping implements InCamping {
 
     }
 
+    public static InAllotjament.Temp getTemporada(LocalDate data) {
+        return null;
+    }
+
+    {
+
+    }
     @Override
     public float calculMidaTotalParceles() {
         return 0;
