@@ -98,11 +98,16 @@ public class Camping implements InCamping {
         return null;
     }
 
-    {
 
-    }
+
+
     @Override
     public float calculMidaTotalParceles() {
+        for (Allotjament cosa : allotjaments) {
+            if (cosa instanceof Parcela) {
+                System.out.println(((Parcela) cosa).getMetres()*((Parcela) cosa).getMetres() + " metres");
+            }
+        }
         return 0;
     }
 

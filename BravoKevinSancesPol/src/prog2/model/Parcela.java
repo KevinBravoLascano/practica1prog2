@@ -8,5 +8,11 @@ public class Parcela extends Allotjament{
         this.metres= this.metres;
         this.conexioElectrica=conexioElectrica;
 
+
+
+    }
+    public float getMetres(){
+
+        return metres;
     }
 }
