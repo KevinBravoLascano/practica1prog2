@@ -3,6 +3,8 @@ package prog2.model;
 public class Allotjament implements InAllotjament {
     protected String nombre;
     protected String id;
+    protected long estanciaMinBaixa;
+    protected long estanciaMinAlta;
     Allotjament(String nom_, String idAllotjament_){
         nombre=nom_;
         id=idAllotjament_;
@@ -29,7 +31,12 @@ public class Allotjament implements InAllotjament {
 
     @Override
     public long getEstadaMinima(Temp temp) {
-        return 0;
+        if(temp==Temp.ALTA){
+            return estanciaMinAlta;
+        }
+        else{
+            return estanciaMinBaixa;
+        }
     }
 
     @Override
