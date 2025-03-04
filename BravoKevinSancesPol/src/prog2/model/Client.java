@@ -7,4 +7,10 @@ public class Client {
         this.nombre = nombre;
         this.dni = dni;
     }
+    public String getDni() {
+        return dni;
+    }
+    public String getNombre() {
+        return nombre;
+    }
 }

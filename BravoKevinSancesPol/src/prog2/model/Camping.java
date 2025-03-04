@@ -94,7 +94,8 @@ public class Camping implements InCamping {
 
     @Override
     public void afegirReserva(String id_, String dni_, LocalDate dataEntrada, LocalDate dataSortida) throws ExcepcioReserva {
-
+        buscarAllotjament(id_);
+        buscarClient(dni_);
     }
 
     public static InAllotjament.Temp getTemporada(LocalDate data) {
@@ -133,6 +134,26 @@ public class Camping implements InCamping {
 
     @Override
     public Allotjament getAllotjamentEstadaMesCurta() {
+        return null;
+    }
+    private Allotjament buscarAllotjament(String id){
+        Iterator<Allotjament> it = allotjaments.iterator();
+        while (it.hasNext()) {
+            Allotjament allotjament = it.next();
+            if(allotjament.getId().equals(id)) {
+                return allotjament;
+            }
+        }
+        return null;
+    }
+    private Client buscarClient(String dni){
+        Iterator<Client> it = clients.iterator();
+        while (it.hasNext()) {
+            Client client = it.next();
+            if(client.getDni().equals(dni)) {
+                return client;
+            }
+        }
         return null;
     }
 }
