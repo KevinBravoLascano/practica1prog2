@@ -1,5 +1,8 @@
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import prog2.model.Allotjament;
+import prog2.model.Client;
+import prog2.model.Reserva;
 import prog2.vista.ExcepcioReserva;
 
 import java.time.LocalDate;

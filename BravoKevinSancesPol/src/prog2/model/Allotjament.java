@@ -5,7 +5,7 @@ public class Allotjament implements InAllotjament {
     protected String id;
     protected long estanciaMinBaixa;
     protected long estanciaMinAlta;
-    Allotjament(String nom_, String idAllotjament_){
+    public Allotjament(String nom_, String idAllotjament_,int estanciaMinAlta_, int estanciaMinBaixa_) {
         nombre=nom_;
         id=idAllotjament_;
     }

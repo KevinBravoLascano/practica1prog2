@@ -1,6 +1,7 @@
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import prog2.model.Allotjament;
 import prog2.model.InAllotjament;
 import prog2.vista.ExcepcioReserva;
 
@@ -23,6 +24,7 @@ class AllotjamentTest {
 
     @Test
     void constructorValid() {
+        Allotjament allotjament = new Allotjament("Allotjament Test", "ID001", 5, 3);
         assertEquals("Allotjament Test", allotjament.getNom());
         assertEquals("ID001", allotjament.getId());
         assertEquals(5, allotjament.getEstadaMinima(InAllotjament.Temp.ALTA));

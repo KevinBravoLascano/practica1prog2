@@ -16,7 +16,7 @@ public class Camping implements InCamping {
     protected ArrayList<Client> clients;
     protected LlistaReserves reservas;
 
-    Camping(String nombre) {
+    public Camping(String nombre) {
         this.nombre = nombre;
     }
     @Override
