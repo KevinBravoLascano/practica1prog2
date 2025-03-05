@@ -11,6 +11,12 @@ public class Bungalow extends Casa{
         this.terrassa = terrassa;
         this.tv = tv;
         this.aireFred = aireFred;
+        estanciaMinAlta = 7;
+        estanciaMinBaixa = 4;
+    }
 
+    @Override
+    public boolean correcteFuncionament() {
+        return aireFred;
     }
 }

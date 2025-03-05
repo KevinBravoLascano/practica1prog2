@@ -8,5 +8,16 @@ public class BungalowPremium extends Bungalow{
         super(nom_, idAllotjament_, mida, habitacions, placesPersones, placesParquing, terrassa, tv, aireFred);
         this.serveisExtra = serveisExtra;
         this.codiWifi = codiWifi;
+        estanciaMinAlta = 7;
+        estanciaMinBaixa = 4;
+    }
+
+    @Override
+    public boolean correcteFuncionament() {
+        boolean correcte1=super.correcteFuncionament();
+        if(correcte1 && codiWifi.length()>=8 && codiWifi.length()<=16) {
+            return true;
+        }
+        return false;
     }
 }

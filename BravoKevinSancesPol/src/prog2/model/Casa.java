@@ -10,4 +10,5 @@ public class Casa extends Allotjament{
         this.habitacions=habitacions;
         this.placesPersones=placesPersones;
     }
+
 }

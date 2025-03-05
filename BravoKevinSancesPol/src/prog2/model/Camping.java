@@ -8,6 +8,8 @@ import java.time.Month;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import static prog2.model.InAllotjament.Temp.BAIXA;
+
 public class Camping implements InCamping {
     private String nombre;
     protected ArrayList<Allotjament> allotjaments;
@@ -106,7 +108,7 @@ public class Camping implements InCamping {
         if (!data.isBefore(iniciAlta) && !data.isAfter(fiAlta)) {
             return InAllotjament.Temp.ALTA;
         } else {
-            return InAllotjament.Temp.BAIXA;
+            return BAIXA;
         }
     }
 
@@ -129,13 +131,30 @@ public class Camping implements InCamping {
 
     @Override
     public int calculAllotjamentsOperatius() {
-
-        return 0;
+        int operativos=0;
+        Iterator<Allotjament> it = allotjaments.iterator();
+        while (it.hasNext()) {
+            Allotjament allotjament = it.next();
+            if(allotjament.correcteFuncionament()) {
+                operativos++;
+            }
+        }
+        return operativos;
     }
 
     @Override
     public Allotjament getAllotjamentEstadaMesCurta() {
-        return null;
+        long comparador=1000000;
+        Iterator<Allotjament> it = allotjaments.iterator();
+        Allotjament resultado=null;
+        while (it.hasNext()) {
+            Allotjament allotjament = it.next();
+            if(allotjament.getEstadaMinima(BAIXA)<comparador) {
+                comparador=allotjament.getEstadaMinima(BAIXA);
+                resultado=allotjament;
+            }
+        }
+        return resultado;
     }
     private Allotjament buscarAllotjament(String id){
         Iterator<Allotjament> it = allotjaments.iterator();

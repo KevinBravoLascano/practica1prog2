@@ -7,12 +7,19 @@ public class Parcela extends Allotjament{
         super(nombre,id);
         this.metres= this.metres;
         this.conexioElectrica=conexioElectrica;
-
+        estanciaMinBaixa=2;
+        estanciaMinAlta=4;
 
 
     }
     public float getMetres(){
 
         return metres;
+    }
+
+    @Override
+    public boolean correcteFuncionament() {
+
+        return conexioElectrica;
     }
 }

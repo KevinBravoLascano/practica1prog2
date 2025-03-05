@@ -7,5 +7,12 @@ public class Glamping extends Casa{
         super(nom_,idAllotjament_,mida,habitacions,placesPersones);
         this.material = material;
         this.casaMascota = casaMascota;
+        estanciaMinAlta=5;
+        estanciaMinBaixa=3;
+    }
+
+    @Override
+    public boolean correcteFuncionament() {
+        return casaMascota;
     }
 }
