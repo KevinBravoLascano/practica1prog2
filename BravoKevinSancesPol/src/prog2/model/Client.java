@@ -3,7 +3,7 @@ package prog2.model;
 public class Client {
     private String dni;
     private String nombre;
-    public Client(String nombre, String dni) {
+    protected Client(String nombre, String dni) {
         this.nombre = nombre;
         this.dni = dni;
     }

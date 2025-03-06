@@ -1,5 +1,7 @@
 package prog2.model;
 
+import java.time.LocalDate;
+
 public class Allotjament implements InAllotjament {
     protected String nombre;
     protected String id;
@@ -38,7 +40,16 @@ public class Allotjament implements InAllotjament {
             return estanciaMinBaixa;
         }
     }
+    public Temp getTemporada(LocalDate fecha) {
+        LocalDate empiezaAlta=LocalDate.of(2025,3,21);
+        LocalDate terminaAlta=LocalDate.of(2025,9,20);
+        if(fecha.isAfter(empiezaAlta)&&fecha.isBefore(terminaAlta)){
+            return Temp.ALTA;
+        }else{
+            return Temp.BAIXA;
+        }
 
+    }
     @Override
     public void setEstadaMinima(long estadaMinimaALTA_, long estadaMinimaBAIXA_) {
         this.estanciaMinAlta = estadaMinimaALTA_;
