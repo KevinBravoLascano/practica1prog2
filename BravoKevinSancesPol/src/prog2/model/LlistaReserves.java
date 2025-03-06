@@ -13,8 +13,8 @@ public class LlistaReserves implements InLlistaReserves {
     @Override
     public void afegirReserva(Allotjament allotjament, Client client, LocalDate dataEntrada, LocalDate dataSortida) throws ExcepcioReserva {
         if(allotjamentDisponible(allotjament,dataEntrada,dataSortida)&&isEstadaMinima(allotjament,dataEntrada,dataSortida)){
-            Reserva acto= new Reserva(allotjament,client,dataEntrada,dataSortida);
-            reservas.add(acto);
+            Reserva actos= new Reserva(allotjament,client,dataEntrada,dataSortida);
+            reservas.add(actos);
         }
     }
 
