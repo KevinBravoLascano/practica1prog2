@@ -9,7 +9,7 @@ public class Client {
         setDni(dni);
     }
 
-    public String getNombre() {
+    public String getNom() {
         return nombre;
     }
 

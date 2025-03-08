@@ -11,12 +11,43 @@ public class LlistaReserves implements InLlistaReserves {
     ArrayList<Reserva> reservas;
 
     @Override
-    public void afegirReserva(Allotjament allotjament, Client client, LocalDate dataEntrada, LocalDate dataSortida) throws ExcepcioReserva {
-        if(allotjamentDisponible(allotjament,dataEntrada,dataSortida)&&isEstadaMinima(allotjament,dataEntrada,dataSortida)){
-            Reserva actos= new Reserva(allotjament,client,dataEntrada,dataSortida);
-            reservas.add(actos);
+    public void afegirReserva(Allotjament allotjament, Client client, LocalDate dataEntrada, LocalDate dataSortida) {
+        try {
+            if (!allotjamentDisponible(allotjament, dataEntrada, dataSortida)) {
+                throw new ExcepcioReserva(
+                        client.getNom(),
+                        client.getDni(),
+                        allotjament.getId(),
+                        dataEntrada,
+                        dataSortida,
+                        "ALLOTJAMENT_NO_DISPONIBLE"
+                );
+            }
+        } catch (ExcepcioReserva e) {
+            System.out.println("Error de disponibilitat: " + e.getMessage());
         }
+
+        try {
+            if (!isEstadaMinima(allotjament, dataEntrada, dataSortida)) {
+                throw new ExcepcioReserva(
+                        client.getNom(),
+                        client.getDni(),
+                        allotjament.getId(),
+                        dataEntrada,
+                        dataSortida,
+                        "ESTADA_MINIMA_INCOMPLETA"
+                );
+            }
+        } catch (ExcepcioReserva e) {
+            System.out.println("Error d'estància mínima: " + e.getMessage());
+        }
+
+        Reserva reserva = new Reserva(allotjament, client, dataEntrada, dataSortida);
+        reservas.add(reserva);
+        System.out.println("Reserva realitzada correctament.");
     }
+
+
 
     @Override
     public int getNumReserves() {
