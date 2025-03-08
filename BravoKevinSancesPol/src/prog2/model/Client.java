@@ -1,16 +1,27 @@
 package prog2.model;
 
 public class Client {
-    private String dni;
     private String nombre;
-    protected Client(String nombre, String dni) {
-        this.nombre = nombre;
-        this.dni = dni;
+    private String dni;
+
+    public Client(String nombre, String dni) {
+        setNombre(nombre);
+        setDni(dni);
     }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
     public String getDni() {
         return dni;
     }
-    public String getNombre() {
-        return nombre;
+
+    public void setDni(String dni) {
+        this.dni = dni;
     }
 }
