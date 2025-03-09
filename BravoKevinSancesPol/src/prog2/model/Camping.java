@@ -18,6 +18,9 @@ public class Camping implements InCamping {
 
     public Camping(String nombre) {
         this.nombre = nombre;
+        this.allotjaments = new ArrayList<>();
+        this.clients = new ArrayList<>();
+        this.reservas = new LlistaReserves();
     }
     @Override
     public String getNom() {
@@ -98,7 +101,13 @@ public class Camping implements InCamping {
     public void afegirReserva(String id_, String dni_, LocalDate dataEntrada, LocalDate dataSortida) throws ExcepcioReserva {
         Allotjament peruvianHouse= buscarAllotjament(id_);
         Client emikukis = buscarClient(dni_);
-        reservas.afegirReserva(peruvianHouse,emikukis,dataEntrada,dataSortida);
+
+        if (emikukis == null) {
+            System.out.println("Error: DNI no trobat");
+        }
+        else {
+            reservas.afegirReserva(peruvianHouse, emikukis, dataEntrada, dataSortida);
+        }
     }
 
     public static InAllotjament.Temp getTemporada(LocalDate data) {

@@ -2,6 +2,8 @@ package prog2.vista;
 
 
 import java.time.LocalDate;
+import java.util.UUID;
+
 /**
  *
  * @author lauraigual
@@ -23,7 +25,7 @@ public class ExcepcioReserva extends Exception {
             case "ESTADA_MINIMA_INCOMPLETA":
                 return String.format(ESTADA_MINIMA_INCOMPLETA, clientName, clientDni, allotjamentId);
             default:
-                return "Error desconocido";
+                return "Error desconegut";
         }
     }
 }
