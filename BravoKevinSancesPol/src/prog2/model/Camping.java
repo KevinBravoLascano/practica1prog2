@@ -113,8 +113,6 @@ public class Camping implements InCamping {
     }
 
 
-
-
     @Override
     public float calculMidaTotalParceles() {
         Iterator<Allotjament> it = allotjaments.iterator();
