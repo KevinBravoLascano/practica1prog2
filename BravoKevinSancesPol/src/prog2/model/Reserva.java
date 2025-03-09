@@ -11,11 +11,16 @@ public class Reserva {
     private LocalDate sales;
 
     public Reserva(Allotjament allotjament, Client client, LocalDate dataEntrada, LocalDate dataSortida) throws ExcepcioReserva {
+        if (dataSortida.isBefore(dataEntrada) || dataSortida.isEqual(dataEntrada)) {
+            throw new ExcepcioReserva("La data de sortida ha de ser posterior a la data d'entrada.");
+        }
+
         setAllotjament_(allotjament);
         setSoci(client);
         setDataEntrada(dataEntrada);
         setDataSortida(dataSortida);
     }
+
 
     public Allotjament getAllotjament_() {
         return al;
