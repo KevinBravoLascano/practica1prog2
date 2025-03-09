@@ -98,20 +98,22 @@ public class Camping implements InCamping {
 
     @Override
     public void afegirReserva(String id_, String dni_, LocalDate dataEntrada, LocalDate dataSortida) throws ExcepcioReserva {
-        Allotjament peruvianHouse= buscarAllotjament(id_);
 
+        Allotjament peruvianHouse = buscarAllotjament(id_);
         Client emikukis = buscarClient(dni_);
 
-        try {
-            if (emikukis == null) {
-                throw new ExcepcioReserva(id_);
-            }
-            reservas.afegirReserva(peruvianHouse, emikukis, dataEntrada, dataSortida);
+        if (peruvianHouse == null || emikukis == null) {
+            throw new ExcepcioReserva(2);
         }
-        catch (ExcepcioReserva e) {
-            System.out.println("Error en la reserva: " + e.getMessage());
+
+        boolean disponible = reservas.allotjamentDisponible(peruvianHouse, dataEntrada, dataSortida);
+        if (!disponible) {
+            throw new ExcepcioReserva(3);
         }
+
+        reservas.afegirReserva(peruvianHouse, emikukis, dataEntrada, dataSortida);
     }
+
 
     public static InAllotjament.Temp getTemporada(LocalDate data) {
         LocalDate iniciAlta = LocalDate.of(data.getYear(), Month.MARCH, 21);

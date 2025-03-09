@@ -19,8 +19,8 @@ public class ExcepcioReserva extends Exception {
         super(generateMessage(clientName, clientDni, allotjamentId, dataEntrada, dataSortida, messageType));
     }
 
-    public ExcepcioReserva(){
-        super(generateMessage2());
+    public ExcepcioReserva(int number){
+        super(generateMessage2(number));
     }
 
     public ExcepcioReserva(String id){
@@ -38,8 +38,16 @@ public class ExcepcioReserva extends Exception {
         }
     }
 
-    private static String generateMessage2(){
-        return String.format(ERROR_DNI);
+    private static String generateMessage2(int number) {
+        switch (number) {
+            case 1:
+                return String.format(ERROR_DNI);
+            case 2:
+                return "Error d'ID";
+            case 3:
+                return "Error no pots reservar per aquestes dates";
+        }
+        return "";
     }
 
     private static String generateMessage3(String id_){

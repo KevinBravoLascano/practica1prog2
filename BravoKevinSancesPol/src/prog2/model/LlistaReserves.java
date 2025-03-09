@@ -56,15 +56,14 @@ public class LlistaReserves implements InLlistaReserves {
         while (it.hasNext()) {
             Reserva r = it.next();
             if (allotjament == r.getAllotjament_()) {
-                if ((entrada.isBefore(r.getDataSortida()) && entrada.isAfter(r.getDataEntrada())) || (salida.isBefore(r.getDataSortida()) && salida.isAfter(r.getDataEntrada()))) {
+                if (!(salida.isBefore(r.getDataEntrada()) || entrada.isAfter(r.getDataSortida()))) {
                     return false;
                 }
             }
-            ;
         }
-
         return true;
     }
+
 
     public boolean isEstadaMinima(Allotjament allotjament, LocalDate entrada, LocalDate salida) {
         if (ChronoUnit.DAYS.between(entrada, salida) >= allotjament.getEstadaMinima(allotjament.getTemporada(entrada))) {

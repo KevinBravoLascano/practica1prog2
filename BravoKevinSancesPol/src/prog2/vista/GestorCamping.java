@@ -178,25 +178,27 @@ public class GestorCamping {
      * @param camping
      */
     private static void ferReserves(Camping camping) throws ExcepcioReserva {
+        try {
+            String idAllotjament = "100P";
+            String DNI = "12345678X";
+            LocalDate dataEntrada = LocalDate.of(2025, 2, 20);
+            LocalDate dataSortida = LocalDate.of(2025, 2, 28);
+            camping.afegirReserva(idAllotjament, DNI, dataEntrada, dataSortida);
 
-        String idAllotjament = "100P";
-        String DNI = "12345678X";
-        LocalDate dataEntrada = LocalDate.of(2025,2,20);
-        LocalDate dataSortida = LocalDate.of(2025,2,28);
-        camping.afegirReserva(idAllotjament, DNI, dataEntrada, dataSortida);
+            DNI = "78659101A";
+            dataEntrada = LocalDate.of(2025, 2, 25);
+            dataSortida = LocalDate.of(2025, 2, 28);
+            camping.afegirReserva(idAllotjament, DNI, dataEntrada, dataSortida);
 
-
-        DNI = "78659101A";
-        dataEntrada = LocalDate.of(2025,2,25);
-        dataSortida = LocalDate.of(2025,2,28);
-        camping.afegirReserva(idAllotjament, DNI, dataEntrada, dataSortida);
-        
-
-        idAllotjament = "300S";
-        DNI = "789101A";
-        dataEntrada = LocalDate.of(2025,2,25);
-        dataSortida = LocalDate.of(2025,2,28);
-        camping.afegirReserva(idAllotjament, DNI, dataEntrada, dataSortida);
+            idAllotjament = "300S";
+            DNI = "789101A";
+            dataEntrada = LocalDate.of(2025, 2, 25);
+            dataSortida = LocalDate.of(2025, 2, 28);
+            camping.afegirReserva(idAllotjament, DNI, dataEntrada, dataSortida);
+        } catch (ExcepcioReserva ex) {
+            System.out.println("Error: " + ex.getMessage());
+        }
     }
-    
+
+
 }

@@ -18,7 +18,7 @@ public class Client {
             setNombre(nombre);
             setDni(dni);
         } else {
-            throw new ExcepcioReserva();
+            throw new ExcepcioReserva(1);
         }
     }
 
