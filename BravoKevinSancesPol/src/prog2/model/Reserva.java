@@ -1,5 +1,7 @@
 package prog2.model;
 
+import prog2.vista.ExcepcioReserva;
+
 import java.time.LocalDate;
 
 public class Reserva {
@@ -8,7 +10,7 @@ public class Reserva {
     private LocalDate entras;
     private LocalDate sales;
 
-    public Reserva(Allotjament allotjament, Client client, LocalDate dataEntrada, LocalDate dataSortida) {
+    public Reserva(Allotjament allotjament, Client client, LocalDate dataEntrada, LocalDate dataSortida) throws ExcepcioReserva {
         setAllotjament_(allotjament);
         setSoci(client);
         setDataEntrada(dataEntrada);

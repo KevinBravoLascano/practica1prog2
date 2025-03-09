@@ -99,13 +99,17 @@ public class Camping implements InCamping {
     @Override
     public void afegirReserva(String id_, String dni_, LocalDate dataEntrada, LocalDate dataSortida) throws ExcepcioReserva {
         Allotjament peruvianHouse= buscarAllotjament(id_);
+
         Client emikukis = buscarClient(dni_);
 
-        if (emikukis == null) {
-            System.out.println("Error: DNI no trobat");
-        }
-        else {
+        try {
+            if (emikukis == null) {
+                throw new ExcepcioReserva(id_);
+            }
             reservas.afegirReserva(peruvianHouse, emikukis, dataEntrada, dataSortida);
+        }
+        catch (ExcepcioReserva e) {
+            System.out.println("Error en la reserva: " + e.getMessage());
         }
     }
 
