@@ -9,41 +9,41 @@ public class Reserva {
     private LocalDate sales;
 
     public Reserva(Allotjament allotjament, Client client, LocalDate dataEntrada, LocalDate dataSortida) {
-        setAllotjament(allotjament);
-        setClient(client);
-        setEntrada(dataEntrada);
-        setSalida(dataSortida);
+        setAllotjament_(allotjament);
+        setSoci(client);
+        setDataEntrada(dataEntrada);
+        setDataSortida(dataSortida);
     }
 
-    public Allotjament getAllotjament() {
+    public Allotjament getAllotjament_() {
         return al;
     }
 
-    public void setAllotjament(Allotjament allotjament) {
+    public void setAllotjament_(Allotjament allotjament) {
         al = allotjament;
     }
 
-    public Client getClient() {
+    public Client getSoci() {
         return peruano;
     }
 
-    public void setClient(Client client) {
+    public void setSoci(Client client) {
         peruano = client;
     }
 
-    public LocalDate getEntrada() {
+    public LocalDate getDataEntrada() {
         return entras;
     }
 
-    public void setEntrada(LocalDate entrada) {
+    public void setDataEntrada(LocalDate entrada) {
         entras = entrada;
     }
 
-    public LocalDate getSalida() {
+    public LocalDate getDataSortida() {
         return sales;
     }
 
-    public void setSalida(LocalDate salida) {
+    public void setDataSortida(LocalDate salida) {
         sales = salida;
     }
 }

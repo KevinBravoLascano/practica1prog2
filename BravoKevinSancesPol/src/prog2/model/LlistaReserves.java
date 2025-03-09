@@ -10,6 +10,11 @@ import java.util.Iterator;
 public class LlistaReserves implements InLlistaReserves {
     ArrayList<Reserva> reservas;
 
+
+    public LlistaReserves() {
+        this.reservas = new ArrayList<>();
+    }
+
     @Override
     public void afegirReserva(Allotjament allotjament, Client client, LocalDate dataEntrada, LocalDate dataSortida) {
         try {
@@ -23,11 +28,7 @@ public class LlistaReserves implements InLlistaReserves {
                         "ALLOTJAMENT_NO_DISPONIBLE"
                 );
             }
-        } catch (ExcepcioReserva e) {
-            System.out.println("Error de disponibilitat: " + e.getMessage());
-        }
 
-        try {
             if (!isEstadaMinima(allotjament, dataEntrada, dataSortida)) {
                 throw new ExcepcioReserva(
                         client.getNom(),
@@ -38,16 +39,16 @@ public class LlistaReserves implements InLlistaReserves {
                         "ESTADA_MINIMA_INCOMPLETA"
                 );
             }
+
+            Reserva reserva = new Reserva(allotjament, client, dataEntrada, dataSortida);
+            reservas.add(reserva);
+            System.out.println("Reserva realitzada correctament.");
+
         } catch (ExcepcioReserva e) {
-            System.out.println("Error d'estància mínima: " + e.getMessage());
+            System.out.println("Error en la reserva: " + e.getMessage());
+
         }
-
-        Reserva reserva = new Reserva(allotjament, client, dataEntrada, dataSortida);
-        reservas.add(reserva);
-        System.out.println("Reserva realitzada correctament.");
     }
-
-
 
     @Override
     public int getNumReserves() {
@@ -59,8 +60,8 @@ public class LlistaReserves implements InLlistaReserves {
         Iterator<Reserva> it = reservas.iterator();
         while (it.hasNext()) {
             Reserva r = it.next();
-            if (allotjament == r.getAllotjament()) {
-                if ((entrada.isBefore(r.getSalida()) && entrada.isAfter(r.getEntrada())) || (salida.isBefore(r.getSalida()) && salida.isAfter(r.getEntrada()))) {
+            if (allotjament == r.getAllotjament_()) {
+                if ((entrada.isBefore(r.getDataSortida()) && entrada.isAfter(r.getDataEntrada())) || (salida.isBefore(r.getDataSortida()) && salida.isAfter(r.getDataEntrada()))) {
                     return false;
                 }
             }
@@ -71,17 +72,10 @@ public class LlistaReserves implements InLlistaReserves {
     }
 
     public boolean isEstadaMinima(Allotjament allotjament, LocalDate entrada, LocalDate salida) {
-        Iterator<Reserva> it = reservas.iterator();
-
-        long estancia = ChronoUnit.DAYS.between(entrada, salida);
-        while (it.hasNext()) {
-            Reserva r = it.next();
-            if (allotjament == r.getAllotjament()) {
-                if (allotjament.getEstadaMinima(allotjament.getTemporada(entrada)) <=estancia ) {
-                    return true;
-                }
-            }
+        if (ChronoUnit.DAYS.between(entrada, salida) >= allotjament.getEstadaMinima(allotjament.getTemporada(entrada))) {
+            return true;
+        } else {
+            return false;
         }
-        return false;
     }
 }

@@ -2,7 +2,6 @@ package prog2.model;
 
 import prog2.vista.ExcepcioReserva;
 
-import javax.swing.text.html.HTMLDocument;
 import java.time.LocalDate;
 import java.time.Month;
 import java.util.ArrayList;
@@ -129,7 +128,7 @@ public class Camping implements InCamping {
         while (it.hasNext()) {
             Allotjament allotjament = it.next();
             if(allotjament instanceof Parcela) {
-                metros+= ((Parcela) allotjament).getMetres();
+                metros+= ((Parcela) allotjament).getMida();
 
             }
         }

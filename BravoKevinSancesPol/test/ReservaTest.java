@@ -2,6 +2,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import prog2.model.Allotjament;
 import prog2.model.Client;
+import prog2.model.Parcela;
 import prog2.model.Reserva;
 import prog2.vista.ExcepcioReserva;
 
@@ -68,7 +69,7 @@ public class ReservaTest {
         LocalDate novaDataEntrada = LocalDate.of(2024, 6, 1);
         LocalDate novaDataSortida = LocalDate.of(2024, 6, 5);
 
-        reserva.setAllostjament_(nouAllotjament);
+        reserva.setAllotjament_(nouAllotjament);
         reserva.setSoci(nouClient);
         reserva.setDataEntrada(novaDataEntrada);
         reserva.setDataSortida(novaDataSortida);
