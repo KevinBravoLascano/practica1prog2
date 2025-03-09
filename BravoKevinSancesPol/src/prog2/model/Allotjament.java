@@ -1,6 +1,7 @@
 package prog2.model;
 
 import java.time.LocalDate;
+import java.time.MonthDay;
 
 public class Allotjament implements InAllotjament {
     protected String nombre;
@@ -43,14 +44,16 @@ public class Allotjament implements InAllotjament {
         }
     }
     public Temp getTemporada(LocalDate fecha) {
-        LocalDate empiezaAlta=LocalDate.of(2025,3,21);
-        LocalDate terminaAlta=LocalDate.of(2025,9,20);
-        if(fecha.isAfter(empiezaAlta)&&fecha.isBefore(terminaAlta)){
-            return Temp.ALTA;
-        }else{
-            return Temp.BAIXA;
-        }
+        MonthDay empiezaAlta = MonthDay.of(3, 21);
+        MonthDay terminaAlta = MonthDay.of(9, 20);
 
+        MonthDay fechaTemporal = MonthDay.from(fecha);
+
+        if (fechaTemporal.isAfter(empiezaAlta) && fechaTemporal.isBefore(terminaAlta)) {
+            return Temp.ALTA;  // Temporada Alta
+        } else {
+            return Temp.BAIXA;  // Temporada Baja
+        }
     }
     @Override
     public void setEstadaMinima(long estadaMinimaALTA_, long estadaMinimaBAIXA_) {

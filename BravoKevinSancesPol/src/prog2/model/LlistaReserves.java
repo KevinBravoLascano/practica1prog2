@@ -17,38 +17,33 @@ public class LlistaReserves implements InLlistaReserves {
 
     @Override
     public void afegirReserva(Allotjament allotjament, Client client, LocalDate dataEntrada, LocalDate dataSortida) throws ExcepcioReserva {
-        try {
-            if (!allotjamentDisponible(allotjament, dataEntrada, dataSortida)) {
-                throw new ExcepcioReserva(
-                        client.getNom(),
-                        client.getDni(),
-                        allotjament.getId(),
-                        dataEntrada,
-                        dataSortida,
-                        "ALLOTJAMENT_NO_DISPONIBLE"
-                );
-            }
-
-            if (!isEstadaMinima(allotjament, dataEntrada, dataSortida)) {
-                throw new ExcepcioReserva(
-                        client.getNom(),
-                        client.getDni(),
-                        allotjament.getId(),
-                        dataEntrada,
-                        dataSortida,
-                        "ESTADA_MINIMA_INCOMPLETA"
-                );
-            }
-
-            Reserva reserva = new Reserva(allotjament, client, dataEntrada, dataSortida);
-            reservas.add(reserva);
-            System.out.println("Reserva realitzada correctament.");
-
-        } catch (ExcepcioReserva e) {
-            System.out.println("Error en la reserva: " + e.getMessage());
-
+        if (!allotjamentDisponible(allotjament, dataEntrada, dataSortida)) {
+            throw new ExcepcioReserva(
+                    client.getNom(),
+                    client.getDni(),
+                    allotjament.getId(),
+                    dataEntrada,
+                    dataSortida,
+                    "ALLOTJAMENT_NO_DISPONIBLE"
+            );
         }
+
+        if (!isEstadaMinima(allotjament, dataEntrada, dataSortida)) {
+            throw new ExcepcioReserva(
+                    client.getNom(),
+                    client.getDni(),
+                    allotjament.getId(),
+                    dataEntrada,
+                    dataSortida,
+                    "ESTADA_MINIMA_INCOMPLETA"
+            );
+        }
+
+        Reserva reserva = new Reserva(allotjament, client, dataEntrada, dataSortida);
+        reservas.add(reserva);
+        System.out.println("Reserva realitzada correctament.");
     }
+
 
     @Override
     public int getNumReserves() {
