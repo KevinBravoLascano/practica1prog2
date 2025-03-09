@@ -10,6 +10,8 @@ public class Allotjament implements InAllotjament {
     public Allotjament(String nom_, String idAllotjament_,int estanciaMinAlta_, int estanciaMinBaixa_) {
         nombre=nom_;
         id=idAllotjament_;
+        this.estanciaMinAlta=estanciaMinAlta_;
+        this.estanciaMinBaixa=estanciaMinBaixa_;
     }
     @Override
     public String getNom() {
@@ -60,4 +62,10 @@ public class Allotjament implements InAllotjament {
     public boolean correcteFuncionament() {
         return false;
     }
+
+    @Override
+    public String toString() {
+        return "Nom=" + nombre + ", Id=" + id + ", estada mínima en temp ALTA: " + estanciaMinAlta + ", estada mínima en temp BAIXA: " + estanciaMinBaixa + ".";
+    }
+
 }
