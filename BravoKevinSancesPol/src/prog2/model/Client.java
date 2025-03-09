@@ -10,7 +10,7 @@ public class Client {
 
     public Client(String nombre, String dni) throws ExcepcioReserva {
 
-        String regex = "^[0-9]{8}[A-Za-z]$";
+        String regex = "^[A-Za-z0-9]{9}$";
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(dni);
 
@@ -18,7 +18,7 @@ public class Client {
             setNombre(nombre);
             setDni(dni);
         } else {
-            throw new ExcepcioReserva(getNom(), getDni());
+            throw new ExcepcioReserva();
         }
     }
 
