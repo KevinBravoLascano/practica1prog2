@@ -1,3 +1,4 @@
+// Versió Jdk Canviada a 18 per no tenir problemes al laboratori.
 
 package prog2.vista;
 
